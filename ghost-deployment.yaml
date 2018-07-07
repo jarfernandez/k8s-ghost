@@ -1,7 +1,7 @@
 apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
-  name: ghost
+  name: ghost-deployment
   labels:
     app: ghost
 spec:
@@ -21,3 +21,10 @@ spec:
         ports:
         - containerPort: 2368
           name: ghost
+        volumeMounts:
+        - name: ghost-persistent-storage
+          mountPath: /var/lib/ghost/content
+      volumes:
+      - name: ghost-persistent-storage
+        persistentVolumeClaim:
+          claimName: ghost-pv-claim
