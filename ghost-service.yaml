@@ -9,4 +9,4 @@ spec:
     app: ghost
   ports:
   - port: 2368
-  type: NodePort
+  type: LoadBalancer
