@@ -1,0 +1,23 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: ghost
+  labels:
+    app: ghost
+spec:
+  selector:
+    matchLabels:
+      app: ghost
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: ghost
+    spec:
+      containers:
+      - image: ghost
+        name: ghost
+        ports:
+        - containerPort: 2368
+          name: ghost
